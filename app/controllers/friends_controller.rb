@@ -5,8 +5,15 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
-    @friends = Friend.all
+    if params[:search_key]
+      @friends = Friend.where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR phone LIKE ? OR twitter LIKE ?", 
+      "%#{params[:search_key]}%", "%#{params[:search_key]}%", "%#{params[:search_key]}%", "%#{params[:search_key]}%", "%#{params[:search_key]}%")
+    else
+      @friends = Friend.all
+    end
   end
+
+
 
   # GET /friends/1
   # GET /friends/1.json
@@ -62,6 +69,8 @@ class FriendsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   def correct_user
     @friend = current_user.friends.find_by(id: params[:id])
