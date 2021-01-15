@@ -5,7 +5,12 @@
   </h1>
   <p class="lead"><%= @friend.email %> |
      <%= @friend.phone %>  |
-     <%= @friend.twitter %></p>
+     <%= @friend.twitter %>  
+     </p>
+     <br/>
+     <div style="width:400px; height:auto">
+       <%= link_to image_tag(@friend.image,style: "width:100%"), friends_path %>
+     </div>
      <br/>
 
  

@@ -6,7 +6,7 @@ class CreateFriends < ActiveRecord::Migration[6.1]
       t.string :email
       t.string :phone
       t.string :twitter
-
+      t.string :image
       t.timestamps
     end
   end
